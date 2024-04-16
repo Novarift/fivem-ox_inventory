@@ -8,6 +8,7 @@ end
 
 function client.hasGroup(group)
 	if not PlayerData.loaded then return end
+	if not PlayerData.groups then return end
 
 	if type(group) == 'table' then
 		for name, rank in pairs(group) do

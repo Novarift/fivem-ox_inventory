@@ -37,6 +37,11 @@ Citizen.CreateThreadNow(function()
         playerColumn = 'charid'
         vehicleTable = 'nd_vehicles'
         vehicleColumn = 'id'
+    elseif shared.framework == 'novarift' then
+		playerTable = 'characters'
+		playerColumn = 'citizen_id'
+		vehicleTable = 'owned_vehicles'
+		vehicleColumn = 'plate'
     end
 
     for k, v in pairs(Query) do
