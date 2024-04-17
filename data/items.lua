@@ -204,11 +204,6 @@ return {
 		}
 	},
 
-	['clothing'] = {
-		label = 'Clothing',
-		consume = 0,
-	},
-
 	['mastercard'] = {
 		label = 'Fleeca Card',
 		stack = false,
@@ -222,4 +217,18 @@ return {
 		label = 'Scrap Metal',
 		weight = 80,
 	},
+
+	-- ['clothes'] = {
+	-- 	label = 'Clothes',
+	-- 	allowArmed = false,
+	-- 	stack = false,
+	-- 	consume = 1,
+	-- 	client = {
+	-- 		anim = { dict = 'clothingtie', clip = 'try_tie_negative_a' },
+	-- 		disable = { move = true, car = true, combat = true },
+	-- 		export = 'novarift-clothes.equip',
+	-- 		usetime = 3500,
+	-- 		cancel = true,
+	-- 	},
+	-- },
 }

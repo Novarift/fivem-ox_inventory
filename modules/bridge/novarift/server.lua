@@ -7,10 +7,11 @@ local function loadPlayerInventory(source)
 
     character.source = source
     character.sex = character.gender
-    character.dateofbirth = character.birth_date
+    character.groups = character.organizations
     character.identifier = character.citizen_id
+    character.dateofbirth = character.birth_date
 
-    server.setPlayerInventory(character, character.inventory)
+    server.setPlayerInventory(character)
 end
 
 SetTimeout(500, function ()
@@ -23,16 +24,19 @@ SetTimeout(500, function ()
     end
 end)
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.setPlayerData(character)
     return {
         source = character.source,
         name = character.name,
         sex = character.gender,
-        organizations = character.organizations,
+        groups = character.organizations,
+        identifier = character.identifier,
         dateofbirth = character.birth_date,
     }
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.hasLicense(inv, license)
 
     local character = server.GetPlayerFromId(inv.id)
@@ -44,6 +48,7 @@ function server.hasLicense(inv, license)
 
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function server.buyLicense(inv, license)
     if (server.hasLicense(inv, license)) then return false, 'already_have' end
     -- if (Inventory.GetItem(inv, 'money', false, true) < license.price) then return false, 'can_not_afford' end
@@ -61,5 +66,6 @@ AddEventHandler('novarift-core:server:player:organizations:updated', function (s
     local inventory = Inventory(source)
     if (not inventory) then return end
 
+---@diagnostic disable-next-line: undefined-field
     inventory.player.groups = organizations
 end)

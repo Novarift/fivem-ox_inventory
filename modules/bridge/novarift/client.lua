@@ -4,19 +4,17 @@ RegisterNetEvent('novarift-core:client:player:organizations:updated', function (
 end)
 
 AddStateBagChangeHandler('logged_in', ('player:%s'):format(cache.serverId), function (_, __, logged)
-    local playerState = LocalPlayer.state
+    if (LocalPlayer.state.logged_in == logged) then return end
 
-    if (playerState.logged_in == logged) then return end
-
-    if (logged) then
-        local character = exports['novarift-core']:GetCharacter()
-        if (not character) then return end
-
-        PlayerData.groups = character.organizations
-        OnPlayerData('groups', character.organizations)
-    else
-        client.onLogout()
+    if (not logged) then
+        return client.onLogout()
     end
+
+    local character = exports['novarift-core']:GetCharacter()
+    if (not character) then return end
+
+    PlayerData.groups = character.organizations
+    OnPlayerData('groups', character.organizations)
 end)
 
 AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), function (_, __, value)
@@ -29,6 +27,7 @@ AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), func
     OnPlayerData('dead', value ~= 'alive')
 end)
 
+---@diagnostic disable-next-line: duplicate-set-field
 function client.setPlayerStatus(values)
     local event
 

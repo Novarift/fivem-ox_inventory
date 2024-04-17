@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 if not lib then return end
 
 local Inventory = {}
