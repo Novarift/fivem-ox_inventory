@@ -212,6 +212,11 @@ return {
 		label = 'Handcuffs',
 		stack = false,
 		weight = 50,
+		consume = 0,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.handcuffs',
+		}
 	},
 
 	['card_enforcement'] = {

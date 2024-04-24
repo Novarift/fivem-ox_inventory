@@ -1,3 +1,4 @@
+local Weapon = require 'modules.weapon.client'
 
 local function normalizeOrganizations(organizations)
     local groups = {}
@@ -40,6 +41,17 @@ AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), func
 
     PlayerData.dead = value ~= 'alive'
     OnPlayerData('dead', value ~= 'alive')
+end)
+
+AddStateBagChangeHandler('handcuffed', ('player:%s'):format(cache.serverId), function (_, __, value)
+    local handcuffed = not not value
+    
+	PlayerData.cuffed = handcuffed
+	LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
+
+	if not PlayerData.cuffed then return end
+
+	Weapon.Disarm()
 end)
 
 ---@diagnostic disable-next-line: duplicate-set-field
