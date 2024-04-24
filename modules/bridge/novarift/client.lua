@@ -1,6 +1,19 @@
+
+local function normalizeOrganizations(organizations)
+    local groups = {}
+
+    for org, data in pairs(organizations or {}) do
+        groups[org] = data.grade
+    end
+
+    return groups
+end
+
 RegisterNetEvent('novarift-core:client:player:organizations:updated', function (organizations)
-    PlayerData.groups = organizations or {}
-    OnPlayerData('groups', PlayerData.groups)
+    local groups = normalizeOrganizations(organizations or {})
+    PlayerData.groups = groups
+
+    OnPlayerData('groups', groups)
 end)
 
 AddStateBagChangeHandler('logged_in', ('player:%s'):format(cache.serverId), function (_, __, logged)
@@ -13,8 +26,10 @@ AddStateBagChangeHandler('logged_in', ('player:%s'):format(cache.serverId), func
     local character = exports['novarift-core']:GetCharacter()
     if (not character) then return end
 
-    PlayerData.groups = character.organizations
-    OnPlayerData('groups', character.organizations)
+    local groups = normalizeOrganizations(character.organizations or {})
+    PlayerData.groups = groups
+
+    OnPlayerData('groups', groups)
 end)
 
 AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), function (_, __, value)

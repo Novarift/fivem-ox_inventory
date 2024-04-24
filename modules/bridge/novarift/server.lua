@@ -1,15 +1,25 @@
 local Inventory = require 'modules.inventory.server'
 local Items = require 'modules.items.server'
 
+local function normalizeOrganizations(organizations)
+    local groups = {}
+
+    for org, data in pairs(organizations or {}) do
+        groups[org] = data.grade
+    end
+
+    return groups
+end
+
 local function loadPlayerInventory(source)
     local character = exports['novarift-core']:GetPlayerCharacter(source)
     if (not character) then return end
-
+    
     character.source = source
     character.sex = character.gender
-    character.groups = character.organizations
     character.identifier = character.citizen_id
     character.dateofbirth = character.birth_date
+    character.groups = normalizeOrganizations(character.organizations)
 
     server.setPlayerInventory(character)
 end
@@ -19,7 +29,7 @@ SetTimeout(500, function ()
         return exports['novarift-core']:GetPlayerCharacter(source)
     end
 
-    for _, player in pairs(exports['novarift-core']:GetPlayers()) do
+    for _, player in pairs(exports['novarift-core']:GetNovariftPlayers()) do
         loadPlayerInventory(player.source)
     end
 end)
@@ -28,11 +38,11 @@ end)
 function server.setPlayerData(character)
     return {
         source = character.source,
-        name = character.name,
         sex = character.gender,
-        groups = character.organizations,
+        name = character.name,
         identifier = character.identifier,
         dateofbirth = character.birth_date,
+        groups = normalizeOrganizations(character.organizations),
     }
 end
 
@@ -67,5 +77,5 @@ AddEventHandler('novarift-core:server:player:organizations:updated', function (s
     if (not inventory) then return end
 
 ---@diagnostic disable-next-line: undefined-field
-    inventory.player.groups = organizations
+    inventory.player.groups = normalizeOrganizations(organizations)
 end)

@@ -194,16 +194,6 @@ return {
 		allowArmed = true
 	},
 
-	['armour'] = {
-		label = 'Bulletproof Vest',
-		weight = 3000,
-		stack = false,
-		client = {
-			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 3500
-		}
-	},
-
 	['mastercard'] = {
 		label = 'Fleeca Card',
 		stack = false,
@@ -216,6 +206,48 @@ return {
 	['scrapmetal'] = {
 		label = 'Scrap Metal',
 		weight = 80,
+	},
+
+	['handcuffs'] = {
+		label = 'Handcuffs',
+		stack = false,
+		weight = 50,
+	},
+
+	['card_enforcement'] = {
+		label = 'Kad Kuasa',
+		stack = false,
+		weight = 20,
+	},
+
+	['armor_light'] = {
+		label = 'Bulletproof Vest (Light)',
+		weight = 3000,
+		stack = false,
+		client = {
+			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
+			usetime = 3500
+		}
+	},
+
+	['armor'] = {
+		label = 'Bulletproof Vest',
+		weight = 3000,
+		stack = false,
+		client = {
+			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
+			usetime = 3500
+		}
+	},
+
+	['armor_heavy'] = {
+		label = 'Bulletproof Vest (Heavy)',
+		weight = 3000,
+		stack = false,
+		client = {
+			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
+			usetime = 3500
+		}
 	},
 
 	-- ['clothes'] = {
