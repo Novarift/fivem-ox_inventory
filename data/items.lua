@@ -219,6 +219,18 @@ return {
 		}
 	},
 
+	['ziptie'] = {
+		label = 'Ziptie',
+		weight = 0.01,
+		stack = true,
+		consume = 1,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.ziptie',
+		}
+	},
+
+
 	['card_enforcement'] = {
 		label = 'Kad Kuasa',
 		stack = false,

@@ -40,35 +40,41 @@ AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), func
     if (not playerState.logged_in) then return end
 
     PlayerData.dead = value ~= 'alive'
-    OnPlayerData('dead', value ~= 'alive')
+    OnPlayerData('dead', PlayerData.dead)
 end)
 
 local attributes = {
-    'handcuffed',
-    -- 'escorting', -- I wish this would work, but ox_inventory disables vehicle entry
-    'escorted'
+    -- ['escorting'] = 'escorting', -- I wish this would work, but ox_inventory disables vehicle entry
+    ['escorted'] = 'escorted',
+    ['tied'] = 'handcuffed',
 }
 
-for _, attribute in pairs(attributes) do
+-- Might need to check for player condition
+for attribute, oxAttribute in pairs(attributes) do
     AddStateBagChangeHandler(attribute, ('player:%s'):format(cache.serverId), function (_, __, value)
         local state = not not value
 
-        PlayerData[attribute] = state
+        PlayerData[oxAttribute] = state
+        OnPlayerData(oxAttribute, state)
 
-        local any = false
-
-        for _, attr in pairs(attributes) do
-            if (PlayerData[attr]) then
-                any = true
-                break
-            end
+        if (state) then
+            Weapon.Disarm()
         end
 
-        LocalPlayer.state:set('invBusy', any, false)
+        CreateThread(function ()
+            Wait(10)
 
-        if (not state) then return end
+            local any = false
 
-        Weapon.Disarm()
+            for _, oxAttr in pairs(attributes) do
+                if (PlayerData[oxAttr]) then
+                    any = true
+                    break
+                end
+            end
+    
+            LocalPlayer.state:set('invBusy', any, false)
+        end)
     end)
 end
 
