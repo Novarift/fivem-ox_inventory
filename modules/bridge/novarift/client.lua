@@ -43,16 +43,34 @@ AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), func
     OnPlayerData('dead', value ~= 'alive')
 end)
 
-AddStateBagChangeHandler('handcuffed', ('player:%s'):format(cache.serverId), function (_, __, value)
-    local handcuffed = not not value
-    
-	PlayerData.cuffed = handcuffed
-	LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
+local attributes = {
+    'handcuffed',
+    -- 'escorting', -- I wish this would work, but ox_inventory disables vehicle entry
+    'escorted'
+}
 
-	if not PlayerData.cuffed then return end
+for _, attribute in pairs(attributes) do
+    AddStateBagChangeHandler(attribute, ('player:%s'):format(cache.serverId), function (_, __, value)
+        local state = not not value
 
-	Weapon.Disarm()
-end)
+        PlayerData[attribute] = state
+
+        local any = false
+
+        for _, attr in pairs(attributes) do
+            if (PlayerData[attr]) then
+                any = true
+                break
+            end
+        end
+
+        LocalPlayer.state:set('invBusy', any, false)
+
+        if (not state) then return end
+
+        Weapon.Disarm()
+    end)
+end
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function client.setPlayerStatus(values)
