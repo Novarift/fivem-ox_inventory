@@ -44,8 +44,7 @@ AddStateBagChangeHandler('condition', ('player:%s'):format(cache.serverId), func
 end)
 
 local attributes = {
-    -- ['escorting'] = 'escorting', -- I wish this would work, but ox_inventory disables vehicle entry
-    ['escorted'] = 'escorted',
+    ['carried'] = 'carried',
     ['tied'] = 'handcuffed',
 }
 

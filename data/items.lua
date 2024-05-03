@@ -215,7 +215,7 @@ return {
 		consume = 0,
 		allowArmed = false,
 		client = {
-			export = 'novarift-organization-police.handcuffs',
+			export = 'novarift-tie.handcuffs',
 		}
 	},
 
@@ -226,7 +226,7 @@ return {
 		consume = 1,
 		allowArmed = false,
 		client = {
-			export = 'novarift-organization-police.ziptie',
+			export = 'novarift-tie.ziptie',
 		}
 	},
 
