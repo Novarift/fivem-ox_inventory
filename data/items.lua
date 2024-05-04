@@ -232,19 +232,9 @@ return {
 
 
 	['card_enforcement'] = {
-		label = 'Kad Kuasa',
+		label = 'Enforcement Card',
 		stack = false,
 		weight = 20,
-	},
-
-	['armor_light'] = {
-		label = 'Bulletproof Vest (Light)',
-		weight = 3000,
-		stack = false,
-		client = {
-			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 3500
-		}
 	},
 
 	['armor'] = {
@@ -254,17 +244,25 @@ return {
 		client = {
 			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
 			usetime = 3500
-		}
+		},
+		server = {
+			export = 'novarift-organizations.armor',
+		},
+
 	},
 
 	['armor_heavy'] = {
-		label = 'Bulletproof Vest (Heavy)',
-		weight = 3000,
+		label = 'Heavy Bulletproof Vest',
+		weight = 6000,
 		stack = false,
 		client = {
 			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 3500
-		}
+			usetime = 7000
+		},
+		server = {
+			export = 'novarift-organizations.armor',
+		},
+
 	},
 
 	-- ['clothes'] = {
