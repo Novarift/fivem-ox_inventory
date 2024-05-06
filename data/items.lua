@@ -211,8 +211,8 @@ return {
 	['handcuffs'] = {
 		label = 'Handcuffs',
 		stack = false,
+		consume = 0.05,
 		weight = 50,
-		consume = 0,
 		allowArmed = false,
 		client = {
 			export = 'novarift-tie.handcuffs',
