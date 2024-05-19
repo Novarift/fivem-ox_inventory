@@ -348,6 +348,13 @@ return {
 		},
 	},
 
+	['ifak'] = {
+		label = 'IFAK',
+		weight = 500,
+		stack = true,
+		degrade = 120,
+	},
+
 	-- ['clothes'] = {
 	-- 	label = 'Clothes',
 	-- 	allowArmed = false,
