@@ -70,6 +70,8 @@ end
 local function canOpenTarget(ped)
 	return IsPedFatallyInjured(ped)
 	or IsEntityPlayingAnim(ped, 'dead', 'dead_a', 3)
+	or IsEntityPlayingAnim(ped, 'dead', 'dead_f', 3)
+	or IsEntityPlayingAnim(ped, 'combat@damage@writhe', 'writhe_loop', 3)
 	or IsPedCuffed(ped)
 	or IsEntityPlayingAnim(ped, 'mp_arresting', 'idle', 3)
 	or IsEntityPlayingAnim(ped, 'missminuteman_1ig_2', 'handsup_base', 3)

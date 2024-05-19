@@ -70,7 +70,10 @@ function server.buyLicense(inv, license)
 end
 
 AddEventHandler('novarift-core:server:player:spawned', loadPlayerInventory)
-AddEventHandler('novarift-core:server:player:unloaded', server.playerDropped)
+AddEventHandler('novarift-core:server:player:unloaded', function (source)
+    Wait(2000)
+    server.playerDropped(source)
+end)
 
 AddEventHandler('novarift-core:server:player:organizations:updated', function (source, organizations)
     local inventory = Inventory(source)

@@ -241,9 +241,12 @@ return {
 		label = 'Bulletproof Vest',
 		weight = 3000,
 		stack = false,
+		allowArmed = false,
 		client = {
 			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 3500
+			disable = { move = true, car = true, combat = true },
+			usetime = 3500,
+			cancel = true,
 		},
 		server = {
 			export = 'novarift-organizations.armor',
@@ -255,14 +258,94 @@ return {
 		label = 'Heavy Bulletproof Vest',
 		weight = 6000,
 		stack = false,
+		allowArmed = false,
 		client = {
 			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 7000
+			disable = { move = true, car = true, combat = true },
+			usetime = 7000,
+			cancel = true,
 		},
 		server = {
 			export = 'novarift-organizations.armor',
 		},
+	},
 
+	['placeables_spike'] = {
+		label = 'Spikes',
+		weight = 5000,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 5000,
+			cancel = true,
+		},
+	},
+
+	['placeables_cone'] = {
+		label = 'Cone',
+		weight = 500,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 500,
+			cancel = true,
+		},
+	},
+
+	['placeables_barricade'] = {
+		label = 'Barricade',
+		weight = 1000,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 1000,
+			cancel = true,
+		},
+	},
+	
+	['placeables_chair'] = {
+		label = 'Chair',
+		weight = 800,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 800,
+			cancel = true,
+		},
+	},
+	
+	['placeables_table'] = {
+		label = 'Table',
+		weight = 1500,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 1500,
+			cancel = true,
+		},
+	},
+
+	['placeables_tent'] = {
+		label = 'Tent',
+		weight = 10000,
+		stack = true,
+		allowArmed = false,
+		client = {
+			export = 'novarift-organization-police.placeables',
+			disable = { move = true, car = true, combat = true },
+			usetime = 10000,
+			cancel = true,
+		},
 	},
 
 	-- ['clothes'] = {

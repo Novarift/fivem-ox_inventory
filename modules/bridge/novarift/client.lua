@@ -48,7 +48,6 @@ local attributes = {
     ['tied'] = 'handcuffed',
 }
 
--- Might need to check for player condition
 for attribute, oxAttribute in pairs(attributes) do
     AddStateBagChangeHandler(attribute, ('player:%s'):format(cache.serverId), function (_, __, value)
         local state = not not value
