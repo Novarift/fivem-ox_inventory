@@ -53,17 +53,6 @@ return {
 		consume = 0.3
 	},
 
-	['bandage'] = {
-		label = 'Bandage',
-		weight = 115,
-		client = {
-			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
-			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500,
-		}
-	},
-
 	['black_money'] = {
 		label = 'Dirty Money',
 	},
@@ -251,7 +240,9 @@ return {
 		server = {
 			export = 'novarift-organizations.armor',
 		},
-
+		data = {
+			armor = 50,
+		},
 	},
 
 	['armor_heavy'] = {
@@ -268,6 +259,9 @@ return {
 		server = {
 			export = 'novarift-organizations.armor',
 		},
+		data = {
+			armor = 100,
+		}
 	},
 
 	['placeables_spike'] = {
@@ -348,11 +342,53 @@ return {
 		},
 	},
 
+	['bandage'] = {
+		label = 'Bandage',
+		weight = 115,
+		stack = true,
+		allowArmed = false,
+		data = {
+			threshold = 0.6,
+			bleeding = 2,
+			health = 25,
+		},
+		client = {
+			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
+			prop = { model = `prop_rolled_sock_02`, pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 49.0, 0.0), bone = 28422, rotOrder = 2 },
+			disable = { move = true, car = true, combat = true },
+			export = 'novarift-medical.healingItem',
+			usetime = 2500,
+			cancel = true,
+		}
+	},
+
+	['medkit'] = {
+		label = 'Medical Kit',
+		degrade = 60 * 12,
+		weight = 350,
+		stack = true,
+		allowArmed = false,
+		data = {
+			threshold = 1.0,
+			bleeding = 3,
+			health = 50,
+		},
+		client = {
+			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
+			prop = { model = `prop_stat_pack_01`, pos = vec3(0.0, 0.0, 0.0), rot = vec3(344.0, 91.0, 305.0), bone = 60309, rotOrder = 2 },
+			disable = { move = true, car = true, combat = true },
+			export = 'novarift-medical.healingItem',
+			usetime = 5000,
+			cancel = true,
+		}
+	},
+
 	['ifak'] = {
 		label = 'IFAK',
+		degrade = 60 * 3,
 		weight = 500,
 		stack = true,
-		degrade = 120,
+		allowArmed = false,
 	},
 
 	-- ['clothes'] = {
