@@ -342,6 +342,22 @@ return {
 		},
 	},
 
+	['painkillers'] = {
+		label = 'Painkillers',
+		weight = 10,
+		stack = true,
+		allowArmed = true,
+		data = {
+			stress = 10.0,
+			injury = 2,
+		},
+		client = {
+			export = 'novarift-medical.soothingItem',
+			usetime = 1000,
+			cancel = true,
+		},
+	},
+
 	['bandage'] = {
 		label = 'Bandage',
 		weight = 115,
